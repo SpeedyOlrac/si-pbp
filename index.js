@@ -7,7 +7,8 @@
     Version 2.0.2 role bot
 
     
-
+    PERMISSIONS INTEGER
+    268503120
 
 */
 
@@ -36,10 +37,6 @@ for (const file of commandFiles) {
 bot.once('ready', async() => {
 	console.log('This bot is online');
 
-    var channel = bot.get_channel("id", '743227873875329137');
-    var message = await channel.send('test');
-    message.react('FlagBlank');
-    message.delete();
 });
 
 bot.on('message', async msg => {
