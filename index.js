@@ -16,7 +16,7 @@
 require('dotenv').config(); 
 const fs = require('fs');
 const Discord = require('discord.js');
-const mongoose = reuire("mongoose");
+const mongoose = require("mongoose");
 //const uri = "mongodb+srv://admin:SpiritIsland@cluster0.eipn2.mongodb.net/PBPGames?retryWrites=true&w=majority";
 const PREFIX = process.env.PREFIX;
 const bot = new Discord.Client({
