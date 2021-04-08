@@ -49,7 +49,7 @@ mongoose
 
 bot.once('ready', async() => {
 	console.log('This bot is online');
-
+    console.log( PREFIX + ' ' + process.env.MONGODB_SRV );
 });
 
 bot.on('message', async msg => {
