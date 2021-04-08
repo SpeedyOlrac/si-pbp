@@ -20,6 +20,8 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:SpiritIsland@cluster0.eipn2.mongodb.net/PBPGames?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
 const bot = new Discord.Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
