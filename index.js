@@ -16,19 +16,14 @@
 require('dotenv').config(); 
 const fs = require('fs');
 const Discord = require('discord.js');
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://admin:SpiritIsland@cluster0.eipn2.mongodb.net/PBPGames?retryWrites=true&w=majority";
-
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-
+const mongoose = reuire("mongoose");
+//const uri = "mongodb+srv://admin:SpiritIsland@cluster0.eipn2.mongodb.net/PBPGames?retryWrites=true&w=majority";
+const PREFIX = process.env.PREFIX;
 const bot = new Discord.Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
 bot.commands = new Discord.Collection();
-
-const PREFIX = "+";
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -39,6 +34,18 @@ for (const file of commandFiles) {
 }};
 
 //console.log(bot.commands);
+
+mongoose
+  .connect(precess.env.MONGODB_SRV, {
+    useNewUrlParser: true,
+    useUnifiedTopology:true,
+    useFindAndModify:true
+
+}).then(() => {
+    console.log("Connected to database.");
+}).catch((err) => {
+    console.log(err);
+});
 
 bot.once('ready', async() => {
 	console.log('This bot is online');
@@ -63,12 +70,6 @@ bot.on('message', async msg => {
 	}
 });
 
-
-client.connect(err => {
-  const collection = client.db("PBPGames").collection("Game1");
-  // perform actions on the collection object
-  client.close();
-});
 
 
 /*
