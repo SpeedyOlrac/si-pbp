@@ -16,13 +16,17 @@
 require('dotenv').config(); 
 const fs = require('fs');
 const Discord = require('discord.js');
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://admin:SpiritIsland@cluster0.eipn2.mongodb.net/PBPGames?retryWrites=true&w=majority";
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const bot = new Discord.Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
 bot.commands = new Discord.Collection();
 
-const PREFIX = "-";
+const PREFIX = "+";
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -56,6 +60,15 @@ bot.on('message', async msg => {
 		//msg.reply('there was an error trying to execute that command!');
 	}
 });
+
+
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+
 
 /*
 bot.on('messageReactionAdd', async (reaction, user) => {
