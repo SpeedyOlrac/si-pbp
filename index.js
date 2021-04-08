@@ -65,7 +65,7 @@ bot.on('message', async msg => {
 
 
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
+  const collection = client.db("sample_airbnb").collection("listingsAndReviews");
   // perform actions on the collection object
   client.close();
 });
