@@ -69,7 +69,6 @@ client.connect(err => {
 });
 
 
-
 /*
 bot.on('messageReactionAdd', async (reaction, user) => {
     console.log("Reaction role add");
