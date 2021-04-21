@@ -75,7 +75,7 @@ bot.on('message', async msg => {
 bot.on('messageReactionAdd', async (reaction, user, mongoose) => {
     console.log("Reaction role add");
 
-    message.channel. = reaction.message.channel.id
+    //message.channel. = reaction.message.channel.id
 
     const channel = '743227873875329137';
     const LFGRole = reaction.message.guild.roles.cache.find(role => role.name === "LFG");
