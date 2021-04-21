@@ -63,7 +63,7 @@ bot.on('message', async msg => {
 	if (!bot.commands.has(command)) return console.log("command not in list");
 
 	try {
-		await bot.commands.get(command).execute(msg, args, Discord);
+		await bot.commands.get(command).execute(msg, args, mongoose);
 	} catch (error) {
 		console.error(error);
 		//msg.reply('there was an error trying to execute that command!');
@@ -72,9 +72,10 @@ bot.on('message', async msg => {
 
 
 
-/*
-bot.on('messageReactionAdd', async (reaction, user) => {
+bot.on('messageReactionAdd', async (reaction, user, mongoose) => {
     console.log("Reaction role add");
+
+    message.channel. = reaction.message.channel.id
 
     const channel = '743227873875329137';
     const LFGRole = reaction.message.guild.roles.cache.find(role => role.name === "LFG");
@@ -153,7 +154,7 @@ bot.on('messageReactionRemove', async (reaction, user) => {
     }
 });
 
-*/
+
 
 
 bot.login();

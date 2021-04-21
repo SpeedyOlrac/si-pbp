@@ -1,7 +1,6 @@
-const game = require('../Schema/Game');
-const player = require('../Schema/player');
-const decks = require('../commands/cardNames');
-const getNextSequence = require('./getNextsequence')getNextSequence;
+const newGame = require('./newGame.js');
+//const player = require('../Schema/player');
+
 
 module.exports = {
 	name: 'game',
@@ -20,33 +19,15 @@ module.exports = {
 
         switch(args[0]){
             case 'new': 
-
                 if (!newGameData) {
-                    let name;
-                    if (args.length < 1){
-                        name = args.shift();
-                    }else{
-                    console.log("Game Must have a Name. game new [name]")
-                    return;
-                    }
 
-                    var num = getNextSequence(name, mongoose);
-
-                    let newGame =  await mongoose.create({
-                    
-                        gameName: name,
-                        serverID: msg.serverID,
-                        channelID: msg.channelID,
-                        minorDeck: decks.minor , 
-                        minorDeck: decks.major ,
-
-                        fear: decks.fear,
-
-
-                    })
-                }
+                    newGame(msg, args, mongoose, newGameData)
              
-
+                }else{
+                    msg.channel.send("The Channel already has a game. Only one game per channel");
+                    return;
+            
+                 }
             break;
             case 'close':
 
